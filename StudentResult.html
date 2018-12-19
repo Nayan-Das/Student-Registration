@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">            <!-- Title Page-->
+    <title>Student Page</title>
+    <link href="bootstrap/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="bootstrap/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="bootstrap/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="bootstrap/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+
+    <link href="css/main.css" rel="stylesheet" media="all">
+</head>
+<body>
+    <div class="page-wrapper bg-gra-02 p-t-110 p-b-70 font-poppins">
+        <div class="wrapper wrapper--w680">
+               <div class="row row-space">
+                <a class="btn btn-primary" href="StudentData.html" role="button">Data</a>
+                 <a class="btn btn-primary" href="StudentPersonal.html" role="button">Personal</a>
+                 <a class="btn btn-primary" href="StudentResult.html" role="button">Result</a>
+                                  
+                </div>
+            <div class="card card-4">
+
+                <div class="card-body">
+                    
+                    <h2 class="title">Student Result</h2>
+                    <form method="POST">
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Roll</label>
+                                    <input class="input--style-4" type="text" name="roll" id="roll">
+                                </div>
+                            </div>
+                        </div>
+                         <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Percent</label>
+                                    <input class="input--style-4" type="text" name="fname" id="per">
+                                </div>
+                            </div>
+                        </div>
+                         <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Class</label>
+                                    <input class="input--style-4" type="text" name="mname" id="clas">
+                            </div>
+                        </div>
+                       </div>
+                        <div class="p-t-15">
+                            <button class="btn btn--radius-2 btn--blue"  type="button" onclick="myFunction()">Submit</button>
+                            <div id="result"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="bootstrap/jquery/jquery.min.js"></script>
+    <script src="bootstrap/select2/select2.min.js"></script>
+    <script src="bootstrap/datepicker/moment.min.js"></script>
+    <script src="bootstrap/datepicker/daterangepicker.js"></script>
+    <script type="text/javascript">
+     function  myFunction(){  
+        $.ajax({  
+    type: 'POST',  
+    url: 'StudentResult.php', 
+    data: { roll: document.getElementById("roll").value ,per:document.getElementById("per").value ,clas:document.getElementById("clas").value },
+    success: function(response) {
+        document.getElementById('result').innerHTML = response;
+        setTimeout(function() { window.location=window.location;},5000);
+    }
+
+});
+        
+    }
+    </script>
+
+</body>
+<!-- </form> -->
+</html>
